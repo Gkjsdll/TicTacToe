@@ -1,22 +1,30 @@
 "use strict";
 
 $(document).ready(function(){
-  var whoseTurn = pickFirst();
+  var whoseTurn;
   var $whoseTurn = $('#whoseTurn');
   var $squares = $('.square');
   var spacesRemaining = 9;
   var gameOver = false;
+  var $covers = $('.cover');
 
   newGame();
   $squares.click(squareClickHandler);
 
+  for(var i = 0; i < $squares.length; i++){ //sets squares to appropriate locations
+    $squares.eq(i).css('top', Math.floor(i/3)*128+'px');
+    $squares.eq(i).css('left', (i%3)*128+'px');
+  }
+
   function newGame(){
+    whoseTurn = pickFirst();
     writeTurn();
     spacesRemaining = 9;
     $squares.text('');
   };
 
   function squareClickHandler(){
+    console.log("gameOver: ", gameOver);
     if(!gameOver){
       var $this = $(this);
       if($this.text() === ""){
@@ -70,10 +78,6 @@ $(document).ready(function(){
       for(var i = 0; i < 4; i++){
         checkSquares(i, 8-i);
       }
-        // checkSquares(0,8);
-        // checkSquares(1,7);
-        // checkSquares(2,6);
-        // checkSquares(3,5);
         break;
       case 5:
         checkSquares(2,8);
@@ -94,26 +98,43 @@ $(document).ready(function(){
         checkSquares(6,7);
         break;
       default:
+          if(!spacesRemaining){
+            noWin();
+          }
         switchTurn();
         break;
     }
-
-    if(!spacesRemaining){
-      alert("Game Over!\nIt's a draw!");
-      gameOver = true;
-    }
     switchTurn();
+    writeTurn();
   };
 
   function checkSquares(square1, square2){
-    var gameOver = $squares.eq(square1).text()+$squares.eq(square2).text() === whoseTurn+whoseTurn;
-    if(gameOver){
-      alert(whoseTurn.toUpperCase() + " won!");
-    }
-    return gameOver;
+      if ($squares.eq(square1).text()+$squares.eq(square2).text() === whoseTurn+whoseTurn){
+        if(whoseTurn === "x"){
+          xWin();
+        }
+        else{
+          oWin();
+        }
+      }
   }
 
   function writeTurn(){
     $whoseTurn.text("It's "+whoseTurn.toUpperCase()+"'s turn.");
+  };
+
+  function xWin(){
+    swal("Game Over!", "X Wins!");
+    $covers.css("visibility","visible");
+  };
+
+  function oWin(){
+    swal("Game Over!", "O Wins!");
+    $covers.css("visibility","visible");
+  };
+
+  function noWin(){
+    swal("Game Over!", "No One Wins!");
+    $covers.css("visibility","visible");
   };
 });
