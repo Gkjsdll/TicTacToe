@@ -43,9 +43,6 @@ $(document).ready(function(){
         $this.css("cursor","default");
         checkWin($this);
       }
-      else{
-        alert("Space already taken");
-      }
     }
   };
 
