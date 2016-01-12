@@ -5,6 +5,7 @@ body {
 
 .gameInfo{
   margin-top: 32px;
+  font-family: Arial, sans-serif;
 }
 
 .gameArea {
@@ -16,10 +17,16 @@ body {
   display: inline-block;
   background-color: white;
 }
+
 .square {
   width: 128px;
   height: 128px;
   display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  font-size: 128px;
+  line-height: 128px;
+  font-family: Arial, sans-serif;
 }
 
 #square1, #square4, #square7, #square2, #square5, #square8 {
