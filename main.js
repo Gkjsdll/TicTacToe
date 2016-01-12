@@ -7,6 +7,13 @@ $(document).ready(function(){
   var spacesRemaining = 9;
   var gameOver = false;
   var $covers = $('.cover');
+  var $newGames = $('.newGame');
+  var $xWin = $('#xWin');
+  var $oWin = $('#oWin');
+  var $noWin = $('#noWin');
+
+
+  $newGames.click(newGame);
 
   newGame();
   $squares.click(squareClickHandler);
@@ -21,10 +28,13 @@ $(document).ready(function(){
     writeTurn();
     spacesRemaining = 9;
     $squares.text('');
+  $xWin.css('visibility', "hidden");
+  $oWin.css('visibility', "hidden");
+  $noWin.css('visibility', "hidden");
+  $covers.css('visibility', 'hidden');
   };
 
   function squareClickHandler(){
-    console.log("gameOver: ", gameOver);
     if(!gameOver){
       var $this = $(this);
       if($this.text() === ""){
@@ -97,12 +107,10 @@ $(document).ready(function(){
         checkSquares(2,5);
         checkSquares(6,7);
         break;
-      default:
-          if(!spacesRemaining){
-            noWin();
-          }
-        switchTurn();
-        break;
+    }
+    console.log(spacesRemaining);
+    if(!spacesRemaining){
+      noWin();
     }
     switchTurn();
     writeTurn();
@@ -124,17 +132,17 @@ $(document).ready(function(){
   };
 
   function xWin(){
-    swal("Game Over!", "X Wins!");
+    $xWin.css("visibility", "visible");
     $covers.css("visibility","visible");
   };
 
   function oWin(){
-    swal("Game Over!", "O Wins!");
+    $oWin.css("visibility", "visible");
     $covers.css("visibility","visible");
   };
 
   function noWin(){
-    swal("Game Over!", "No One Wins!");
+    $noWin.css("visibility", "visible");
     $covers.css("visibility","visible");
   };
 });
