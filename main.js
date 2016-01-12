@@ -28,10 +28,11 @@ $(document).ready(function(){
     writeTurn();
     spacesRemaining = 9;
     $squares.text('');
-  $xWin.css('visibility', "hidden");
-  $oWin.css('visibility', "hidden");
-  $noWin.css('visibility', "hidden");
-  $covers.css('visibility', 'hidden');
+    $xWin.css('visibility', "hidden");
+    $oWin.css('visibility', "hidden");
+    $noWin.css('visibility', "hidden");
+    $covers.css('visibility', 'hidden');
+    $this.css("cursor","pointer");
   };
 
   function squareClickHandler(){
@@ -39,6 +40,7 @@ $(document).ready(function(){
       var $this = $(this);
       if($this.text() === ""){
         $this.text(whoseTurn);
+        $this.css("cursor","default");
         checkWin($this);
       }
       else{
