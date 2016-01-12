@@ -1,0 +1,39 @@
+body {
+  text-align: center;
+  background-color: #e0f1ff;
+}
+
+.gameInfo{
+  margin-top: 32px;
+}
+
+.gameArea {
+  width: 386px;
+  height: 386px;
+  font-size: 0px;
+  vertical-align: middle;
+  margin-top: 32px;
+  display: inline-block;
+  background-color: white;
+}
+.square {
+  width: 128px;
+  height: 128px;
+  display: inline-block;
+}
+
+#square1, #square4, #square7, #square2, #square5, #square8 {
+  border-right: 1px solid black;
+}
+
+#square1, #square2, #square3, #square4, #square5, #square6 {
+  border-bottom: 1px solid black;
+}
+
+.turnTime, .totalTime {
+  width: 50%;
+}
+
+.turn p{
+  display: inline-block;
+}
