@@ -181,10 +181,11 @@ body {
   transform: rotate(-15deg);
   z-index: 15;
 }
+
 .zack {
   position: absolute;
   display: inline-block;
-  left: 332px;
+  left: 364px;
   top: 48px;
   max-height: 190px;
   -ms-transform: rotate(15deg); /* IE 9 */

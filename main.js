@@ -26,6 +26,7 @@ $(document).ready(function(){
     whoseTurn = pickFirst();
     writeTurn();
     spacesRemaining = 9;
+    gameOver = false;
     $squares.text('');
     $squares.css("cursor","pointer");
     $xWin.css('visibility', "hidden");
@@ -106,7 +107,7 @@ $(document).ready(function(){
         checkSquares(6,7);
         break;
     }
-    if(!spacesRemaining){
+    if(!spacesRemaining && !gameOver){
       noWin();
     }
     switchTurn();
@@ -129,16 +130,19 @@ $(document).ready(function(){
   };
 
   function xWin(){
+    gameOver = true;
     $xWin.css("visibility", "visible");
     $covers.css("visibility","visible");
   };
 
   function oWin(){
+    gameOver = true;
     $oWin.css("visibility", "visible");
     $covers.css("visibility","visible");
   };
 
   function noWin(){
+    gameOver = true;
     $noWin.css("visibility", "visible");
     $covers.css("visibility","visible");
   };
