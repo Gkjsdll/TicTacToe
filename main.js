@@ -84,9 +84,9 @@ $(document).ready(function(){
         checkSquares(4,5);
         break;
       case 4:
-      for(var i = 0; i < 4; i++){
-        checkSquares(i, 8-i);
-      }
+        for(var i = 0; i < 4; i++){
+          checkSquares(i, 8-i);
+        }
         break;
       case 5:
         checkSquares(2,8);
