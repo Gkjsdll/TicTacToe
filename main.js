@@ -43,8 +43,18 @@ $(document).ready(function(){
 
   function checkWin($square){
     spacesRemaining--;
-    var location = $square.index()+1;
-    switch(location){
+    switch($square.index()){
+      case 0:
+        if(checkSquares(1,2)){
+          alert(whoseTurn.toUpperCase()+" Wins!");
+        }
+        else if(checkSquares(3,6)){
+          alert(whoseTurn.toUpperCase()+" Wins!");
+        }
+        else if(checkSquares(4,8)){
+          alert(whoseTurn.toUpperCase()+" Wins!");
+        }
+        break;
       case 1:
         break;
       case 2:
@@ -61,8 +71,6 @@ $(document).ready(function(){
         break;
       case 8:
         break;
-      case 9:
-        break;
       default:
         switchTurn();
         break;
@@ -74,6 +82,10 @@ $(document).ready(function(){
     }
     switchTurn();
   };
+
+  function checkSquares(square1, square2){
+    return $squares.eq(square1).text()+$squares.eq(square2).text() === whoseTurn+whoseTurn;
+  }
 
   function writeTurn(){
     $whoseTurn.text("It's "+whoseTurn.toUpperCase()+"'s turn.");
