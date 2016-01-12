@@ -20,7 +20,7 @@ $(document).ready(function(){
     if(!gameOver){
       var $this = $(this);
       if($this.text() === ""){
-        $this.text($this.index());
+        $this.text(whoseTurn);
         checkWin($this);
       }
       else{
@@ -54,27 +54,48 @@ $(document).ready(function(){
         checkSquares(4,8);
         break;
       case 1:
-        checkSquares(0,2)
-
+        checkSquares(0,2);
+        checkSquares(4,7);
         break;
       case 2:
+        checkSquares(0,1);
+        checkSquares(4,6);
+        checkSquares(5,8);
         break;
       case 3:
+        checkSquares(0,6);
+        checkSquares(4,5);
         break;
       case 4:
+      for(var i = 0; i < 4; i++){
+        checkSquares(i, 8-i);
+      }
+        // checkSquares(0,8);
+        // checkSquares(1,7);
+        // checkSquares(2,6);
+        // checkSquares(3,5);
         break;
       case 5:
+        checkSquares(2,8);
+        checkSquares(3,4);
         break;
       case 6:
+        checkSquares(0,3);
+        checkSquares(2,4);
+        checkSquares(7,8);
         break;
       case 7:
+        checkSquares(1,4);
+        checkSquares(6,8);
         break;
       case 8:
+        checkSquares(0,4);
+        checkSquares(2,5);
+        checkSquares(6,7);
         break;
       default:
         switchTurn();
         break;
-
     }
 
     if(!spacesRemaining){
@@ -87,7 +108,7 @@ $(document).ready(function(){
   function checkSquares(square1, square2){
     var gameOver = $squares.eq(square1).text()+$squares.eq(square2).text() === whoseTurn+whoseTurn;
     if(gameOver){
-      alert(whoseTurn + " won!");
+      alert(whoseTurn.toUpperCase() + " won!");
     }
     return gameOver;
   }
