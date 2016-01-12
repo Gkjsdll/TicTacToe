@@ -5,6 +5,8 @@ $(document).ready(function(){
   var $whoseTurn = $('#whoseTurn');
   var $squares = $('.square');
   var spacesRemaining = 9;
+  var gameOver = false;
+
   newGame();
   $squares.click(squareClickHandler);
 
@@ -15,13 +17,15 @@ $(document).ready(function(){
   };
 
   function squareClickHandler(){
-    var $this = $(this);
-    if($this.text() === ""){
-      $this.text(whoseTurn);
-      checkWin($this);
-    }
-    else{
-      alert("Space already taken");
+    if(!gameOver){
+      var $this = $(this);
+      if($this.text() === ""){
+        $this.text($this.index());
+        checkWin($this);
+      }
+      else{
+        alert("Space already taken");
+      }
     }
   };
 
@@ -45,17 +49,13 @@ $(document).ready(function(){
     spacesRemaining--;
     switch($square.index()){
       case 0:
-        if(checkSquares(1,2)){
-          alert(whoseTurn.toUpperCase()+" Wins!");
-        }
-        else if(checkSquares(3,6)){
-          alert(whoseTurn.toUpperCase()+" Wins!");
-        }
-        else if(checkSquares(4,8)){
-          alert(whoseTurn.toUpperCase()+" Wins!");
-        }
+        checkSquares(1,2);
+        checkSquares(3,6);
+        checkSquares(4,8);
         break;
       case 1:
+        checkSquares(0,2)
+
         break;
       case 2:
         break;
@@ -79,12 +79,17 @@ $(document).ready(function(){
 
     if(!spacesRemaining){
       alert("Game Over!\nIt's a draw!");
+      gameOver = true;
     }
     switchTurn();
   };
 
   function checkSquares(square1, square2){
-    return $squares.eq(square1).text()+$squares.eq(square2).text() === whoseTurn+whoseTurn;
+    var gameOver = $squares.eq(square1).text()+$squares.eq(square2).text() === whoseTurn+whoseTurn;
+    if(gameOver){
+      alert(whoseTurn + " won!");
+    }
+    return gameOver;
   }
 
   function writeTurn(){
