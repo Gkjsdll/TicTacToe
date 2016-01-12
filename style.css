@@ -165,3 +165,25 @@ body {
 	border: 25px solid;
 	border-color: transparent transparent transparent white;
 }
+
+.cade {
+  position: absolute;
+  display: inline-block;
+  left: -108px;
+  top: 56px;
+  -ms-transform: rotate(-15deg); /* IE 9 */
+  -webkit-transform: rotate(-15deg); /* Safari */
+  transform: rotate(-15deg);
+  z-index: 15;
+}
+.zack {
+  position: absolute;
+  display: inline-block;
+  left: 332px;
+  top: 48px;
+  max-height: 218px;
+  -ms-transform: rotate(15deg); /* IE 9 */
+  -webkit-transform: rotate(15deg); /* Safari */
+  transform: rotate(15deg);
+  z-index: 15;
+}

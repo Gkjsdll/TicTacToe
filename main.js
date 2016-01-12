@@ -12,7 +12,6 @@ $(document).ready(function(){
   var $oWin = $('#oWin');
   var $noWin = $('#noWin');
 
-
   $newGames.click(newGame);
 
   newGame();
@@ -107,7 +106,6 @@ $(document).ready(function(){
         checkSquares(6,7);
         break;
     }
-    console.log(spacesRemaining);
     if(!spacesRemaining){
       noWin();
     }
