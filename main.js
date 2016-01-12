@@ -28,11 +28,11 @@ $(document).ready(function(){
     writeTurn();
     spacesRemaining = 9;
     $squares.text('');
+    $squares.css("cursor","pointer");
     $xWin.css('visibility', "hidden");
     $oWin.css('visibility', "hidden");
     $noWin.css('visibility', "hidden");
     $covers.css('visibility', 'hidden');
-    $this.css("cursor","pointer");
   };
 
   function squareClickHandler(){
