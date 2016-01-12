@@ -19,6 +19,7 @@
   background-color: rgba(0,0,0,0.45);
   visibility:hidden;
   z-index: 2;
+  cursor: default;
 }
 
 body {
@@ -94,7 +95,7 @@ body {
   visibility: hidden;
   background-color: white;
   border-radius: 12px;
-  cursor: pointer;
+  cursor: default;
 }
 
 .winText{
@@ -106,7 +107,6 @@ body {
   right: 0px;
   left: 0px;
   z-index: 10;
-  /*top: -12px;*/
 }
 
 .newGame {
@@ -119,6 +119,11 @@ body {
   font-size: 18px;
   border-width: 0px;
   background-color: transparent;
+  cursor: pointer;
+}
+
+.newGame:hover{
+  color:blue;
 }
 
 #xWin:before {
